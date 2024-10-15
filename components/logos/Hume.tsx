@@ -1,41 +1,32 @@
-import React from "react";
-import styled from "styled-components";
+import type { FC, SVGAttributes } from "react";
+import { useId } from "react";
 
-// Define the types of props you want to allow for customization
-interface LogoProps {
-  color?: string;
-  width?: string | number;
-  height?: string | number;
-  strokeWidth?: number;
-  onClick?: () => void; // Optional click handler for interactivity
+export type HumeLogoProps = SVGAttributes<SVGSVGElement>;
+
+export default function HumeLogo(props: HumeLogoProps) {
+  const id = useId();
+
+  const gradientId = hume-logo-gradient-${id};
+
+  return (
+    <svg
+      width="106"
+      height="25"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 106 25"
+      {...props}
+    >
+      
+      <path
+        fill="currentColor"
+        d="M99.1283,7.24597c-1.9557,0-3.74921,0.67923-5.06921,1.85868c-1.3199,1.17944-2.1514,2.97284-2.1514,5.00884
+	s0.8315,3.8294,2.1514,4.9922c1.32,1.1794,3.1302,1.8586,5.06921,1.8586c1.3847,0,2.6567-0.3396,3.8147-1.0021
+	c1.157-0.6625,2.037-1.5676,2.625-2.7135l-2.56-1.2113c-0.718,1.5994-2.135,2.553-3.89481,2.553
+	c-1.0105,0-1.9072-0.3229-2.6734-0.9687c-0.7662-0.6457-1.2547-1.4872-1.45049-2.5211H106.22
+	c0.13-2.3422-0.587-4.3782-1.859-5.71991C103.088,8.05402,101.214,7.24597,99.1283,7.24597z M94.9877,13.11139
+	c0.1957-1.0506,0.6675-1.8904,1.4186-2.5362c0.7495-0.63072,1.64619-0.9536,2.722-0.9536c1.0757,0,1.98869,0.32288,2.73869,0.9536
+	c0.749,0.6307,1.223,1.4856,1.41901,2.5362H94.9877z"
+      />
+    </svg>
+  );
 }
-
-const Svg = styled.svg<LogoProps>`
-  fill: ${({ color }) => color || "#FFFFFF"}; // Default color set to white
-  width: ${({ width }) => width || "100px"};  // Default width
-  height: ${({ height }) => height || "auto"}; // Default height
-  stroke-width: ${({ strokeWidth }) => strokeWidth || 1}; // Default stroke width
-`;
-
-const ArdoiseLogo: React.FC<LogoProps> = ({ color, width, height, strokeWidth, onClick }) => (
-  <Svg
-    width={width}
-    height={height}
-    viewBox="0 0 1006 512"
-    xmlns="http://www.w3.org/2000/svg"
-    strokeWidth={strokeWidth}
-    color={color}
-    onClick={onClick} // Optional interactivity
-  >
-    <path
-      d="M57.5,273.5c24.8,0,50.5-16.7,73.6-40.9c24-25,47-56.5,47-90c0-32.4-23.2-65-54.6-65c-24.8,0-50.5,16.7-73.6,40.9C26.2,145.6,2.5,177,2.5,210.5c0,32.4,23.2,65,54.6,65"
-      fill={color || "#FFFFFF"} // Fill with default color or user input
-    />
-    {/* Add more paths or shapes to recreate the full logo */}
-    <text x="150" y="50" fontFamily="Verdana" fontSize="35" fill="white">
-      Ardoise
-    </text>
-  </Svg>
-);
-
-export default ArdoiseLogo;
